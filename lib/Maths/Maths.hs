@@ -3,6 +3,7 @@
 module Maths.Maths where
 
 import Data.List
+import Data.List.Split
 
 -- |Calculates the median value of a list
 median :: (Fractional a, Ord a) => [a] -> a
@@ -26,6 +27,3 @@ fib :: Int -> Int
 fib 0 = 0
 fib 1 = 1
 fib n = fib (n - 1) + fib (n - 2)
-
--- |Indentity matrix of given size
-idMatrix = undefined

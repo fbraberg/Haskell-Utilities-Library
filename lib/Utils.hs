@@ -23,8 +23,8 @@
 
 module Utils where
 
-
 import Data.List
 
 import Maths.Maths
 import Conversion.Conversion
+import Datastructures.BinarySearchTree
