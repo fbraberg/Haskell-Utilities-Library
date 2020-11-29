@@ -1,19 +1,27 @@
 module Conversion.Conversion where
 
 -- | Converts 10-base Integer to binary.
-toBinary :: Integer -> Integer
-toBinary n = read (concat(map show(toBinarylist n)))
+toBinary :: Int -> Int
+toBinary n = read (concat(map show(toBinaryList n)))
   
 
-toBinarylist :: Integer -> [Integer]
-toBinarylist 0 = [0]
-toBinarylist n | n `mod` 2 == 1 = (toBinarylist (n `div` 2) ++ [1])
-               | n `mod` 2 == 0 = (toBinarylist (n `div` 2) ++ [0])
+toBinaryList :: Int -> [Int]
+toBinaryList 0 = [0]
+toBinaryList n | n `mod` 2 == 1 = (toBinaryList (n `div` 2) ++ [1])
+               | n `mod` 2 == 0 = (toBinaryList (n `div` 2) ++ [0])
            
 
 -- | Converts from binary to 10-base Integer.
-fromBinary :: Integer -> Integer
-fromBinary = undefined
+fromBinary :: Int -> Int
+fromBinary n = fromBinaryList(ns)
+  where ns = map (\x -> read [x] :: Int) (show n)
+
+fromBinaryList :: [Int] -> Int
+fromBinaryList xs = sum (zipWith (*) calcList (reverse xs))
+  where
+    twoList = map (\x -> if x > 0 then x+1 else x) xs -- | Converts 1s to 2s in the list.
+    calcList = zipWith (^) (reverse twoList) [0,1..] -- | Calculates the value for each element.
+
 
 -- | Converts 10-base Integer to hexadecimal.
 toHex :: Integer -> Integer
