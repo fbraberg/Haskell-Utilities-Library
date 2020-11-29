@@ -1,5 +1,5 @@
 module Conversion where
-import Test.QuickCheck
+
 
 
 -- | Converts 10-base Integer to binary.
