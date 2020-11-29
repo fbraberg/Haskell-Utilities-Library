@@ -1,4 +1,4 @@
-module Conversion.Conversion where
+module Conversion where
 
 -- | Converts 10-base Integer to binary.
 toBinary :: Integer -> Integer

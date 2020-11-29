@@ -1,4 +1,4 @@
-module Datastructures.BinarySearchTree where
+module BinarySearchTree where
 
 import Data.Char
 import Data.List
