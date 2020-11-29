@@ -2,7 +2,14 @@ module Conversion.Conversion where
 
 -- | Converts 10-base Integer to binary.
 toBinary :: Integer -> Integer
-toBinary = undefined
+toBinary n = read (concat(map show(toBinarylist n)))
+  
+
+toBinarylist :: Integer -> [Integer]
+toBinarylist 0 = [0]
+toBinarylist n | n `mod` 2 == 1 = (toBinarylist (n `div` 2) ++ [1])
+               | n `mod` 2 == 0 = (toBinarylist (n `div` 2) ++ [0])
+           
 
 -- | Converts from binary to 10-base Integer.
 fromBinary :: Integer -> Integer
