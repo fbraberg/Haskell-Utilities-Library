@@ -5,8 +5,8 @@ import Data.List
 import Maths
 
 
-type Root a = Node a
-data BST a = BST (Root a) deriving (Show)
+
+data BST a = BST (Node a) deriving (Show)
 
 -- ==========================/Node\==========================
 data Node a = Node {keyVal :: Int
@@ -26,10 +26,7 @@ instance Eq a => Ord (Node a) where
 nodes = map (\(k,v)->createNode k v Nothing Nothing) $ zip  [1..10] ['a'..'j']
 
 createBST :: Ord a => [Node a] -> BST a
-createBST nodes = undefined--BST
-    where
-        sortedNodes = sort nodes
-        midIndex = 2
+createBST nodes = undefined
 
 
 createNode :: Int -> a -> Maybe (Node a) -> Maybe (Node a)  -> Node a
