@@ -2,6 +2,7 @@ module BinarySearchTree where
 
 import Data.Char
 import Data.List
+import Maths
 
 
 type Root a = Node a
@@ -22,8 +23,13 @@ instance Eq a => Ord (Node a) where
     (>=) (Node key1 val1 _ _) (Node key2 val2 _ _) = key1 >= key2
 -- ==========================\Node/==========================
 
-createBST :: Ord a => [Node a] -> [Node a]
-createBST nodes = undefined -- Work In Progress
+nodes = map (\(k,v)->createNode k v Nothing Nothing) $ zip  [1..10] ['a'..'j']
+
+createBST :: Ord a => [Node a] -> BST a
+createBST nodes = undefined--BST
+    where
+        sortedNodes = sort nodes
+        midIndex = 2
 
 
 createNode :: Int -> a -> Maybe (Node a) -> Maybe (Node a)  -> Node a

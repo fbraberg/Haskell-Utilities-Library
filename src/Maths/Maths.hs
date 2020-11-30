@@ -2,7 +2,6 @@ module Maths where
 
 import Data.List
 import Data.List.Split
-import Test.QuickCheck
 
 
 -- |Calculates the median value of a list
