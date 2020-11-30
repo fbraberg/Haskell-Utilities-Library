@@ -1,6 +1,6 @@
 # Installation Guide
 
-## Prerquisites
+## Prerequisites
 * Glasgow Haskell Compiler - GHC.
 * Cabal.
 
