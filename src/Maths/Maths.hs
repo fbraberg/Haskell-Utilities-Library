@@ -32,7 +32,7 @@ fib 1 = 1
 fib n = fib (n - 1) + fib (n - 2)
 
 {- Prime Generation -}
--- Initiates the program, run this to generate a prime
+-- Generates a prime
 getPrime :: IO Integer
 getPrime = do
     seed <- newStdGen
