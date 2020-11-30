@@ -2,6 +2,7 @@ module Maths where
 
 import Data.List
 import Data.List.Split
+import System.Random
 
 
 -- |Calculates the median value of a list
@@ -21,10 +22,30 @@ mean lst = sum lst / fromIntegral (length lst)
 
 -- |Calculates the fibonacci sequence given a length
 fibs :: Int -> [Int]
-fibs n = map fib [1..n]
+fibs n | n < 0     = []
+       | otherwise = map fib [1..n]
 
 -- |Calculates the n:th fibonacci number
 fib :: Int -> Int
 fib 0 = 0
 fib 1 = 1
 fib n = fib (n - 1) + fib (n - 2)
+
+{- Prime Generation -}
+-- Initiates the program, run this to generate a prime
+getPrime :: IO Integer
+getPrime = do
+    seed <- newStdGen
+    randomPrime $ fst $ randomR (1,100000) seed
+
+-- Recursive helper func to generate a prime
+randomPrime :: Integer -> IO Integer
+randomPrime n | isPrime n = return n
+              | otherwise = do
+                  seed <- newStdGen
+                  randomPrime $ fst $ randomR (1,100000) seed
+
+
+-- Checks if an Integer is prime
+isPrime :: Integer -> Bool
+isPrime n = all (\e -> rem n e /= 0) [2..n-1]
