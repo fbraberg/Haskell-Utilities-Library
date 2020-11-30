@@ -16,15 +16,18 @@ data Node a = Node {keyVal :: Int
 
 instance Show a => Show (Node a) where
     show (Node key val left right) =
-        ("Key: " ++ (show key) ++ " Value: " ++ show val ++
-         "Left node: " ++ (show left) ++ "Right node: " ++ (show right) ++ "\n") -- Fix non exhaustive pattern to see if createBST works
+        ("Key: " ++ (show key) ++ ", Value: " ++ show val ++
+         ", Left node: " ++ (show left) ++ ", Right node: " ++ (show right) ++ "\n")
+    show End = "NULL"
+
 
 instance Eq a => Ord (Node a) where
     (<=) (Node key1 val1 _ _) (Node key2 val2 _ _) = key1 <= key2
     (>=) (Node key1 val1 _ _) (Node key2 val2 _ _) = key1 >= key2
 -- ==========================\Node/==========================
 
-nodes = map (\(k,v)->createNode k v End End) $ zip  [1..10] ['a'..'j']
+mNodes = map (\(k,v)->createNode k v End End) $ zip  [1..10] ['a'..'j']
+sNodes = map (\(k,v)->createNode k v End End) $ zip  [1..3] ['a'..'c']
 
 createBST :: Ord a => [Node a] -> Node a
 createBST [Node k v End End] = Node k v End End
@@ -33,7 +36,7 @@ createBST nodes = Node k v leftBranch rightBranch
         midIndex = div (length nodes) 2
         Node k v _ _ = head $ drop midIndex nodes
         leftBranch = createBST $ take midIndex nodes
-        rightBranch = createBST $ drop midIndex nodes
+        rightBranch = createBST $ drop (midIndex+1) nodes
 
 
 createNode :: Int -> a -> Node a -> Node a  -> Node a
