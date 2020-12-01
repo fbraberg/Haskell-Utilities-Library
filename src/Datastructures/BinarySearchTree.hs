@@ -44,6 +44,11 @@ createBST_helper nodes = Node k v leftBranch rightBranch
         rightBranch = createBST_helper $ drop (midIndex+1) nodes
 
 
+searchBST :: Node a -> BST a -> Node a
+searchBST (Node k v End End) (BST (Node key val left right))
+    | k < key   = searchBST (Node k v End End) (BST left)
+    | k > key   = searchBST (Node k v End End) (BST right)
+    | otherwise = Node key val left right
 
 createNode :: Int -> a -> Node a -> Node a  -> Node a
 createNode key val left right = Node key val left right
