@@ -28,8 +28,10 @@ instance Eq a => Ord (Node a) where
 
 lNodes = map (\(k,v)->createNode k v End End) $ zip  [1..]
                         [[c1] ++ [c2] | c1 <- ['a'..'z'], c2 <- ['a'..'z']]
-mNodes = map (\(k,v)->createNode k v End End) $ zip  [1..] ['a'..'j']
+mNodes = map (\(k,v)->createNode k v End End) $ zip  [1..] ['a'..'z']
 sNodes = map (\(k,v)->createNode k v End End) $ zip  [1..] ['a'..'c']
+
+alphabetTree = createBST mNodes
 
 createBST :: Ord a => [Node a] -> BST a
 createBST nodes = BST $ createBST_helper nodes
