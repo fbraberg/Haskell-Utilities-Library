@@ -49,3 +49,9 @@ randomPrime n | isPrime n = return n
 -- Checks if an Integer is prime
 isPrime :: Integer -> Bool
 isPrime n = all (\e -> rem n e /= 0) [2..n-1]
+
+comb :: Integer -> Integer -> Integer
+comb = undefined
+
+perm :: Integer -> Integer -> Integer
+perm = undefined
