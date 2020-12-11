@@ -1,4 +1,4 @@
-module Maths where
+module Maths(median, mean, fibs, fib, getPrime, isPrime, comb, perm) where
 
 import Data.List
 import Data.List.Split

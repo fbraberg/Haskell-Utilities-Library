@@ -1,4 +1,4 @@
-module BinarySearchTree where
+module BinarySearchTree(createBST) where
 
 import Data.Char
 import Data.List
@@ -34,7 +34,7 @@ sNodes = map (\(k,v)->createNode k v End End) $ zip  [1..] ['a'..'c']
 alphabetTree = createBST mNodes
 
 createBST :: Ord a => [Node a] -> BST a
-createBST nodes = BST $ createBST_helper nodes
+createBST nodes = undefined -- BST $ createBST_helper nodes
 
 createBST_helper :: Ord a => [Node a] -> Node a
 createBST_helper [Node k v End End] = Node k v End End

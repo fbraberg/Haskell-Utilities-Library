@@ -1,10 +1,10 @@
-module Conversion where
+module Conversion(toBinary, fromBinary) where
 
 
 
 -- | Converts 10-base Integer to binary.
-toBinary :: Integer -> Integer
-toBinary n = read (concat(map show(toBinaryList n)))
+toBinary :: Integer -> String
+toBinary n = concat(map show(toBinaryList n))
 
 
 toBinaryList :: Integer -> [Integer]
@@ -14,15 +14,16 @@ toBinaryList n | n `mod` 2 == 1 = (toBinaryList (n `div` 2) ++ [1])
 
 
 -- | Converts from binary to 10-base Integer.
-fromBinary :: Integer -> Integer
+fromBinary :: String -> Integer
 fromBinary n = fromBinaryList(ns)
-  where ns = map (\x -> read [x] :: Integer) (show n)
+  where ns = map (\x -> read [x] :: Integer) n
 
 fromBinaryList :: [Integer] -> Integer
 fromBinaryList xs = sum (zipWith (*) calcList (reverse xs))
   where
     twoList = map (\x -> if x > 0 then x+1 else x) xs -- | Converts 1s to 2s in the list.
     calcList = zipWith (^) (reverse twoList) [0,1..] -- | Calculates the value for each element.
+
 
 
 
