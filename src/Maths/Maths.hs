@@ -50,8 +50,13 @@ randomPrime n | isPrime n = return n
 isPrime :: Integer -> Bool
 isPrime n = all (\e -> rem n e /= 0) [2..n-1]
 
-comb :: Integer -> Integer -> Integer
-comb = undefined
+fac :: Integer -> Integer
+fac 0 = 1
+fac n =  n * fac(n-1)
+
+comb :: Integer -> Integer -> Integer          -- Combinations are permutations
+comb n r  = perm n r `div` fac r               -- but with copies removed.
+                                               -- Hence the  `div` $ fac r
 
 perm :: Integer -> Integer -> Integer
-perm = undefined
+perm n r = fac n `div` fac (n-r)
