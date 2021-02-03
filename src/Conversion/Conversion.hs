@@ -15,13 +15,13 @@ b2i I = 1
 b2i O = 0
 
 -- | Converts 10-base Integer to binary.
-toBinary :: Integer -> Bin
+toBinary :: Integer ->  Bin
 toBinary n = Bin(toBinaryList n)
 
 
 
 toBinaryList :: Integer -> [Bit]
-toBinaryList 0 = []
+toBinaryList 0 = [O]
 toBinaryList n | n `mod` 2 == 1 = (toBinaryList (n `div` 2) ++ [I])
                | n `mod` 2 == 0 = (toBinaryList (n `div` 2) ++ [O])
 
